@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Light Theme (fasun) */
+.fasun {
+  background-color: #f3f4f6;
+  color: #000000;
+}
+
+/* Dark Theme (famoon) */
+.famoon {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Ensure form fields are visible in dark mode */
+.famoon .MuiTextField-root .MuiInputBase-input {
+  color: #ffffff;
+}
+
+.famoon .MuiTextField-root .MuiInput-underline:before {
+  border-bottom-color: rgba(255, 255, 255, 0.42);
+}
+
+.famoon .MuiTextField-root .MuiInput-underline:hover:before {
+  border-bottom-color: rgba(255, 255, 255, 0.87);
+}
+
+.famoon .MuiTextField-root .MuiInput-underline:after {
+  border-bottom-color: #90caf9;
+}
+
+
+.slick-list {
+  overflow: hidden !important;
+  margin: 0 !important;
+  height: 100%;
+}
+
+.slick-slide {
+  padding: 0 !important;
+  margin: 0 !important;
+  transition: all 0.3s ease !important;
+  height: 100%;
+}
+
+.slick-track {
+  display: flex !important;
+  margin-left: 0 !important;
+  height: 100%;
+}
+
+.slick-slide > div {
+  height: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0;
+}
