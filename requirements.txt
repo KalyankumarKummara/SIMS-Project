@@ -59,7 +59,7 @@ pydantic==2.10.6
 pydantic_core==2.27.2
 Pygments==2.19.1
 PyJWT==2.10.1
-pymongo==10.10.10.10
+pymongo==4.5.0 
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 python-jose==3.3.0
