@@ -25,7 +25,6 @@ import { useNavigate } from "react-router";
 import StudentDashboardNavbar from "../components/StudentNavbar";
 import Footer from "../components/Studentfooter";
 import API_BASE_URL from "../config";
-const API_BASE_URL = `${API_BASE_URL}`;
 
 const NotificationManagement = () => {
   const [notifications, setNotifications] = useState([]);
