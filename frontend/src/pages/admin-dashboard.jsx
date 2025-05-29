@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Bar, Pie, Doughnut } from "react-chartjs-2";
+import API_BASE_URL from "../config";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from "chart.js";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box, Typography } from '@mui/material';
 
@@ -33,7 +34,7 @@ const AdminDashboard = () => {
 
   const fetchDashboardData = async () => {
     try {
-      const response = await fetch("http://localhost:8000/admin/dashboard", {
+      const response = await fetch(`${API_BASE_URL}/admin/dashboard`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

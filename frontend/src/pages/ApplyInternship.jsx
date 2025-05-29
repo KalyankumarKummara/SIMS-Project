@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import API_BASE_URL from "../config";
 import {
   FaCheckCircle,
   FaTimesCircle,
@@ -185,7 +186,7 @@ const ApplyInternship = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:8000/student-profile/${studentId}`, {
+        const response = await fetch(`${API_BASE_URL}/student-profile/${studentId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
@@ -257,7 +258,7 @@ const ApplyInternship = () => {
         status: "pending",
       };
 
-      const url = `http://localhost:8000/applications/?internship_id=${internshipId}`;
+      const url = `${API_BASE_URL}/applications/?internship_id=${internshipId}`;
 
       const response = await fetch(url, {
         method: "POST",

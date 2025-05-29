@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CompanyNavbar from "../components/CompanyNavbar";
 import Footer from "../components/Companyfooter";
+import API_BASE_URL from "../config";
 import {
   Table,
   TableBody,
@@ -68,7 +69,7 @@ const ShortlistedCandidates = () => {
   const fetchShortlistedCandidates = async () => {
     try {
       const companyId = localStorage.getItem("company_id");
-      const response = await fetch(`http://localhost:8000/companies/${companyId}/applications`, {
+      const response = await fetch(`${API_BASE_URL}/companies/${companyId}/applications`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -82,7 +83,7 @@ const ShortlistedCandidates = () => {
       const candidatesWithInternshipNames = await Promise.all(
         data.data.shortlisted.map(async (candidate) => {
           const internshipResponse = await fetch(
-            `http://localhost:8000/internships/${candidate.internship_id}`
+            `${API_BASE_URL}/internships/${candidate.internship_id}`
           );
           const internshipData = await internshipResponse.json();
           return {

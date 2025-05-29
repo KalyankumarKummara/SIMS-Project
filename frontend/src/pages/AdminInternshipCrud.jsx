@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import API_BASE_URL from "../config";
 import {
   Container,
   Typography,
@@ -64,7 +65,7 @@ const AdminInternshipPage = () => {
     const fetchInternships = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:8000/admin/internships", {
+        const response = await axios.get(`${API_BASE_URL}/admin/internships`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -89,7 +90,7 @@ const AdminInternshipPage = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `http://localhost:8000/admin/internship/${internshipId}`,
+        `${API_BASE_URL}/admin/internship/${internshipId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -112,7 +113,7 @@ const AdminInternshipPage = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.put(
-        `http://localhost:8000/admin/internship/${internshipId}/${status}`,
+        `${API_BASE_URL}/admin/internship/${internshipId}/${status}`,
         {},
         {
           headers: {

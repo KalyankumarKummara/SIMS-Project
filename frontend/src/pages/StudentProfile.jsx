@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import API_BASE_URL from "../config";
 import {
   Container,
   Typography,
@@ -125,7 +126,7 @@ const StudentProfile = () => {
     const fetchStudentProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(`http://localhost:8000/student-profile/${student_id}`, {
+        const response = await axios.get(`${API_BASE_URL}/student-profile/${student_id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -188,7 +189,7 @@ const StudentProfile = () => {
       if (socialLinks.portfolio) formData.append("social_links_portfolio", socialLinks.portfolio);
 
       const response = await axios.put(
-        `http://localhost:8000/student-profile/${student_id}`,
+        `${API_BASE_URL}/student-profile/${student_id}`,
         formData,
         {
           headers: {
@@ -218,7 +219,7 @@ const StudentProfile = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.put(
-        `http://localhost:8000/student-profile/${student_id}`,
+        `${API_BASE_URL}/student-profile/${student_id}`,
         formData,
         {
           headers: {
@@ -251,7 +252,7 @@ const StudentProfile = () => {
 
       const token = localStorage.getItem("token");
       const response = await axios.put(
-        `http://localhost:8000/student-profile/${student_id}`,
+        `${API_BASE_URL}/student-profile/${student_id}`,
         formData,
         { headers: { Authorization: `Bearer ${token}`, "Content-Type": "multipart/form-data" } }
       );

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import API_BASE_URL from "../config";
 import {
   Box,
   Typography,
@@ -36,7 +37,7 @@ const LandingPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/internships");
+        const response = await fetch(`${API_BASE_URL}/internships`);
         const data = await response.json();
         
         if (data.status === "success") {

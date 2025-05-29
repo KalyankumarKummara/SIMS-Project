@@ -6,6 +6,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import { FaBell } from "react-icons/fa";
 import CompanyNavbar from "../components/CompanyNavbar"
 import Footer from "../components/Companyfooter"
+import API_BASE_URL from "../config";
 // Register Chart.js components
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title);
 
@@ -42,7 +43,7 @@ const RecruiterDashboard = () => {
 
   const fetchDashboardData = async () => {
     try {
-      const response = await fetch("http://localhost:8000/company/dashboard", {
+      const response = await fetch(`${API_BASE_URL}/company/dashboard`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -68,7 +69,7 @@ const RecruiterDashboard = () => {
         throw new Error("Company ID or token not found");
       }
 
-      const response = await fetch(`http://localhost:8000/internships/company/${companyId}`, {
+      const response = await fetch(`${API_BASE_URL}/internships/company/${companyId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

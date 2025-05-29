@@ -24,8 +24,8 @@ import { CheckCircle, Delete, MarkEmailRead, Notifications } from "@mui/icons-ma
 import { useNavigate } from "react-router";
 import StudentDashboardNavbar from "../components/StudentNavbar";
 import Footer from "../components/Studentfooter";
-// Replace with your correct backend URL
-const API_BASE_URL = "http://localhost:8000";
+import API_BASE_URL from "../config";
+const API_BASE_URL = `${API_BASE_URL}`;
 
 const NotificationManagement = () => {
   const [notifications, setNotifications] = useState([]);

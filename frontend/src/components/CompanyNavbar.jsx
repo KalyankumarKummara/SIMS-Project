@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import API_BASE_URL from "../config";
 import {
   AppBar,
   Toolbar,
@@ -43,7 +44,7 @@ const CompanyNavbar = ({ pageTitle }) => {
       if (companyId) {
         try {
           const token = localStorage.getItem("token");
-          const response = await axios.get(`http://localhost:8000/company-profile/${companyId}`, {
+          const response = await axios.get(`${API_BASE_URL}/company-profile/${companyId}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },

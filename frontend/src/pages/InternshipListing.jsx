@@ -4,6 +4,7 @@ import { FaSearch, FaMapMarkerAlt, FaClock, FaCheckCircle } from "react-icons/fa
 import { Avatar } from "@mui/material";
 import StudentDashboardNavbar from "../components/StudentNavbar";
 import Footer from "../components/Studentfooter";
+import API_BASE_URL from "../config";
 
 const InternshipListingPage = () => {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ const InternshipListingPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/internships");
+        const response = await fetch(`${API_BASE_URL}/internships`);
         const data = await response.json();
         
         if (data.status === "success") {

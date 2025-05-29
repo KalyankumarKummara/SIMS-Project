@@ -4,6 +4,7 @@ import { FaMapMarkerAlt, FaClock, FaCheckCircle, FaArrowLeft, FaShareAlt, FaPape
 import { motion } from "framer-motion";
 import axios from "axios";
 import { Avatar } from "@mui/material";
+import API from "../utils/api";
 
 const InternshipDetails = () => {
   const { internshipId } = useParams();
@@ -17,7 +18,7 @@ const InternshipDetails = () => {
     const fetchInternshipDetails = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/internships/${internshipId}`
+          `${API_BASE_URL}/internships/${internshipId}`
         );
         const data = await response.json();
 
@@ -51,7 +52,7 @@ const InternshipDetails = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://127.0.0.1:8000/save",
+        `${API_BASE_URL}/save`,
         { internship_id: internshipId },
         { headers: { Authorization: `Bearer ${token}` } }
       );

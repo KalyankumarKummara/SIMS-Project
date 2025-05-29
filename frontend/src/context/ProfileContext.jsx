@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import API_BASE_URL from "../config";
 
 const ProfileContext = createContext();
 
@@ -15,10 +16,9 @@ export const ProfileProvider = ({ children }) => {
     socialLinks: {},
   });
 
-  // ✅ Function to Update Student Profile via API
   const updateProfile = async (studentId, formData) => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/Students/${studentId}`, {
+      const response = await fetch(`${API_BASE_URL}/Students/${studentId}`, {
         method: "PUT",
         body: formData,
       });

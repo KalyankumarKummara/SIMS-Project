@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
 import { FaSearch, FaCheck } from "react-icons/fa";
 import AdminNavbar from "../components/AdminNavbar"; 
+import API_BASE_URL from "../config";
 
 const AdminCRUD = () => {
   const [users, setUsers] = useState([]);
@@ -54,7 +55,7 @@ const AdminCRUD = () => {
     setIsLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:8000/admin/users", {
+      const response = await axios.get(`${API_BASE_URL}/admin/users`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -108,7 +109,7 @@ const AdminCRUD = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.put(
-        `http://localhost:8000/admin/user/${userId}?status=approved`,
+        `${API_BASE_URL}/admin/user/${userId}?status=approved`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -131,7 +132,7 @@ const AdminCRUD = () => {
   // Delete user
   const handleDeleteUser = async () => {
     try {
-      await axios.delete(`http://localhost:8000/admin/user/${userToDelete._id}`, {
+      await axios.delete(`${API_BASE_URL}/admin/user/${userToDelete._id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       fetchUsers(); // Refresh the user list

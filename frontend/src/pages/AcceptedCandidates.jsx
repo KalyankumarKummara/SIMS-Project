@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CompanyNavbar from "../components/CompanyNavbar";
 import Footer from "../components/Companyfooter";
+import API_BASE_URL from "../config";
 import {
   Table,
   TableBody,
@@ -78,7 +79,7 @@ const AcceptedCandidates = () => {
   const fetchAcceptedCandidates = async () => {
     try {
       const companyId = localStorage.getItem("company_id");
-      const response = await fetch(`http://localhost:8000/companies/${companyId}/applications`, {
+      const response = await fetch(`${API_BASE_URL}/companies/${companyId}/applications`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -92,7 +93,7 @@ const AcceptedCandidates = () => {
       const candidatesWithInternshipDetails = await Promise.all(
         data.data.accepted.map(async (candidate) => {
           const internshipResponse = await fetch(
-            `http://localhost:8000/internships/${candidate.internship_id}`
+            `${API_BASE_URL}/${candidate.internship_id}`
           );
           const internshipData = await internshipResponse.json();
           return {
@@ -148,7 +149,7 @@ const AcceptedCandidates = () => {
     setResumePreviewOpen(true);
   };
 
-  // Handle closing the resume preview modal
+  // Handle closing t8000he resume preview modal
   const handleResumePreviewClose = () => {
     setResumePreviewOpen(false);
     setSelectedResumeUrl("");

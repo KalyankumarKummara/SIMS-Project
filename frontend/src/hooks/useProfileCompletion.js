@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../config";
 
 export const useProfileCompletion = (student_id) => {
   const [loading, setLoading] = useState(false);
@@ -30,7 +31,7 @@ export const useProfileCompletion = (student_id) => {
       });
 
       const response = await axios.put(
-        `http://localhost:8000/Students/${student_id}`,
+        `${API_BASE_URL}/Students/${student_id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

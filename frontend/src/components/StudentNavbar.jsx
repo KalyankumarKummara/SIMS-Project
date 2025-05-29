@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import API_BASE_URL from "../config";
 import {
   AppBar,
   Toolbar,
@@ -34,7 +35,7 @@ const StudentDashboardNavbar = ({ pageTitle }) => {
       try {
         const token = localStorage.getItem("token");
         const studentId = localStorage.getItem("student_id");
-        const response = await axios.get(`http://localhost:8000/student-profile/${studentId}`, {
+        const response = await axios.get(`${API_BASE_URL}/student-profile/${studentId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

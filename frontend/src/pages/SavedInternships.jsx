@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../config";
 import { motion } from "framer-motion";
 import {
   FaTrash,
@@ -79,7 +80,7 @@ const SavedInternships = () => {
     const fetchSavedInternships = async () => {
       try {
         const token = localStorage.getItem("token"); // Get auth token
-        const response = await axios.get("http://127.0.0.1:8000/saved", {
+        const response = await axios.get(`${API_BASE_URL}/saved`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setSavedInternships(response.data.saved_internships);
@@ -97,7 +98,7 @@ const SavedInternships = () => {
   const removeSavedInternship = async (internshipId) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://127.0.0.1:8000/remove/${internshipId}`, {
+      await axios.delete(`${API_BASE_URL}/remove/${internshipId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

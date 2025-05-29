@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import API_BASE_URL from "../config";
 import { useParams } from "react-router-dom";
 import {
   Container,
@@ -76,7 +77,7 @@ const CompanyProfile = () => {
     const fetchCompanyProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(`http://localhost:8000/company-profile/${company_id}`, {
+        const response = await axios.get(`${API_BASE_URL}/company-profile/${company_id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -138,7 +139,7 @@ const CompanyProfile = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.put(
-        `http://localhost:8000/company-profile/${company_id}`,
+        `${API_BASE_URL}/company-profile/${company_id}`,
         formData,
         {
           headers: {
@@ -165,7 +166,7 @@ const CompanyProfile = () => {
       formData.append("remove_logo", "true"); 
   
       const response = await axios.put(
-        `http://localhost:8000/company-profile/${company_id}`,
+        `${API_BASE_URL}/company-profile/${company_id}`,
         formData,
         {
           headers: {
@@ -181,7 +182,7 @@ const CompanyProfile = () => {
         toast.success("Logo removed successfully!");
   
         const fetchResponse = await axios.get(
-          `http://localhost:8000/company-profile/${company_id}`,
+          `${API_BASE_URL}/company-profile/${company_id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         if (fetchResponse.data.status === "success") {
@@ -205,7 +206,7 @@ const CompanyProfile = () => {
 
       const token = localStorage.getItem("token");
       const response = await axios.put(
-        `http://localhost:8000/company-profile/${company_id}`,
+        `${API_BASE_URL}/company-profile/${company_id}`,
         formData,
         {
           headers: {

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import API_BASE_URL from "../config";
 import Select from "react-select";
 import CompanyNavbar from "../components/CompanyNavbar"; 
 import Footer from "../components/Companyfooter";
@@ -40,7 +41,7 @@ const EditInternship = () => {
     const fetchInternshipDetails = async () => {
       try {
         // Fetch internship details
-        const internshipResponse = await fetch(`http://localhost:8000/internship/${internshipId}`);
+        const internshipResponse = await fetch(`${API_BASE_URL}/internship/${internshipId}`);
         if (!internshipResponse.ok) {
           throw new Error(`Failed to fetch internship details: ${internshipResponse.statusText}`);
         }
@@ -51,7 +52,7 @@ const EditInternship = () => {
         const data = internshipResult.data;
 
         // Fetch company details using company_id
-        const companyResponse = await fetch(`http://localhost:8000/company-profile/${data.company_id}`);
+        const companyResponse = await fetch(`${API_BASE_URL}/company-profile/${data.company_id}`);
         if (!companyResponse.ok) {
           throw new Error(`Failed to fetch company details: ${companyResponse.statusText}`);
         }
@@ -144,7 +145,7 @@ const EditInternship = () => {
 
       console.log("Payload being sent to the backend:", payload); // Debugging: Log the payload
 
-      const response = await fetch(`http://localhost:8000/internship/${internshipId}`, {
+      const response = await fetch(`${API_BASE_URL}/internship/${internshipId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

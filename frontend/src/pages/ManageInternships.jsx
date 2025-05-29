@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../config";
 import { FaEdit, FaTrash, FaSearch } from "react-icons/fa";
 import Modal from "../components/Modal";
 import CompanyNavbar from "../components/CompanyNavbar";
@@ -86,7 +87,7 @@ const ManageInternshipsPage = () => {
         }
 
         // Fetch posted internships
-        fetch(`http://localhost:8000/internships/company/${companyId}`)
+        fetch(`${API_BASE_URL}/internships/company/${companyId}`)
             .then((res) => res.json())
             .then((data) => {
                 if (Array.isArray(data)) {
@@ -117,7 +118,7 @@ const ManageInternshipsPage = () => {
     // Function to confirm deletion
     const confirmDelete = () => {
         if (selectedInternshipId) {
-            fetch(`http://localhost:8000/internships/${selectedInternshipId}`, {
+            fetch(`${API_BASE_URL}/internships/${selectedInternshipId}`, {
                 method: "DELETE",
             })
                 .then((res) => res.json())

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import API_BASE_URL from "../config";
 
 export const useRecruiterProfileCompletion = (company_id) => {
   const [loading, setLoading] = useState(false);
@@ -14,7 +15,7 @@ export const useRecruiterProfileCompletion = (company_id) => {
     setError(null);
 
     try {
-      const response = await fetch(`http://localhost:8000/Companies/${company_id}`, {
+      const response = await fetch(`${API_BASE_URL}/Companies/${company_id}`, {
         method: "PUT",
         body: formData,  // Send FormData directly
       });

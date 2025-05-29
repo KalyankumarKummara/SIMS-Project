@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import CompanyNavbar from "../CompanyNavbar";
 import Footer from "../Companyfooter";
+import API_BASE_URL from "../../config";
 
 export default function CompanyProfileForm() {
   const [step, setStep] = useState(1);
@@ -40,7 +41,7 @@ export default function CompanyProfileForm() {
           return;
         }
 
-        const response = await fetch(`http://localhost:8000/user-details/${user.company_id}`);
+        const response = await fetch(`${API_BASE_URL}/user-details/${user.company_id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch company data");
         }

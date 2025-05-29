@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import CompanyNavbar from "../components/CompanyNavbar";
 import Footer from "../components/Companyfooter";
+import API_BASE_URL from "../config";
 import {
   Card,
   CardContent,
@@ -100,14 +101,14 @@ const ApplicationsList = () => {
         let response;
         if (application_id) {
           // Fetch a specific application
-          response = await fetch(`http://localhost:8000/applications/${application_id}`, {
+          response = await fetch(`${API_BASE_URL}/applications/${application_id}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           });
         } else {
           // Fetch all applications for the internship
-          response = await fetch(`http://localhost:8000/internships/${internship_id}/applications`, {
+          response = await fetch(`${API_BASE_URL}/internships/${internship_id}/applications`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import API_BASE_URL from "../config";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   Container,
@@ -81,7 +82,7 @@ const UpdateApplicationStatus = () => {
     const fetchApplication = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/applications/${applicationId}`
+          `${API_BASE_URL}/applications/${applicationId}`
         );
         setApplication(response.data.data);
         setStatus(response.data.data.status);
@@ -100,7 +101,7 @@ const UpdateApplicationStatus = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:8000/applications/${applicationId}/status?status=${status}`,
+        `${API_BASE_URL}/applications/${applicationId}/status?status=${status}`,
         null,
         {
           headers: {

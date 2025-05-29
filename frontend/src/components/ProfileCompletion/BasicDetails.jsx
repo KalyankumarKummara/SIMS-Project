@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
 import Select from "react-select";
 import { FaTimes } from "react-icons/fa";
+import API_BASE_URL from "../../config";
 
 // Skills Options
 const skillsOptions = [
@@ -205,7 +206,7 @@ const BasicDetails = ({ data, setData, nextStep }) => {
           return;
         }
 
-        const apiUrl = `http://localhost:8000/user-details/${user.student_id}`;
+        const apiUrl = `${API_BASE_URL}/user-details/${user.student_id}`;
         console.log("Fetching user details from:", apiUrl);
 
         const response = await fetch(apiUrl);

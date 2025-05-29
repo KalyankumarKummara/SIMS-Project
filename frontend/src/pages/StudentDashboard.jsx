@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../config";
 import { Doughnut, Bar, Scatter, Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, PointElement, Title } from "chart.js";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box, Typography, Chip, IconButton, Button, AppBar, Toolbar, Avatar, Menu, MenuItem, Container, Grid, Link } from '@mui/material';
@@ -37,7 +38,7 @@ const StudentDashboard = () => {
 
   const fetchDashboardData = async () => {
     try {
-      const response = await fetch("http://localhost:8000/student/dashboard", {
+      const response = await fetch(`${API_BASE_URL}/student/dashboard`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -72,7 +73,7 @@ const StudentDashboard = () => {
   const handleDeleteNotification = async (index) => {
     try {
       // Call the backend API to delete the notification
-      const response = await fetch(`http://localhost:8000/notifications/${index}`, {
+      const response = await fetch(`${API_BASE_URL}/notifications/${index}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

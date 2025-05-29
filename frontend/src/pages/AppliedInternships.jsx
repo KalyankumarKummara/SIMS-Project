@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaTrash, FaSearch } from "react-icons/fa";
+import API_BASE_URL from "../config";
 import {
     Table,
     TableBody,
@@ -90,7 +91,7 @@ const AppliedInternships = () => {
     useEffect(() => {
         const fetchAppliedInternships = async () => {
             try {
-                const response = await fetch(`http://localhost:8000/students/${studentId}/applied-internships`);
+                const response = await fetch(`${API_BASE_URL}/students/${studentId}/applied-internships`);
                 const data = await response.json();
 
                 if (data.status === "success") {
@@ -121,7 +122,7 @@ const AppliedInternships = () => {
         if (selectedApplicationId) {
             try {
                 const response = await fetch(
-                    `http://localhost:8000/applications/${selectedApplicationId}/student/${studentId}`,
+                    `${API_BASE_URL}/applications/${selectedApplicationId}/student/${studentId}`,
                     {
                         method: "DELETE",
                     }

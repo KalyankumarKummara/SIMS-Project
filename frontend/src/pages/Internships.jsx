@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Select from "react-select";
 import CompanyNavbar from "../components/CompanyNavbar";
 import Footer from "../components/Companyfooter";
+import API_BASE_URL from "../config";
 
 const InternshipForm = () => {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ const InternshipForm = () => {
           return;
         }
 
-        const apiUrl = `http://127.0.0.1:8000/company-profile/${companyId}`;
+        const apiUrl = `${API_BASE_URL}/company-profile/${companyId}`;
         const response = await fetch(apiUrl);
 
         if (!response.ok) {
@@ -147,7 +148,7 @@ const InternshipForm = () => {
 
       console.log("Payload being sent to the backend:", payload);
 
-      const response = await fetch("http://127.0.0.1:8000/internships/", {
+      const response = await fetch(`${API_BASE_URL}/internships/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

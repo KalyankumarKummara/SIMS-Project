@@ -6,6 +6,7 @@ import { useAuth } from "@/context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import StudentDashboardNavbar from "../StudentNavbar";
 import Footer from "../Studentfooter";
+import API_BASE_URL from "../../config";
 
 const StudentProfileCompletion = () => {
   const [step, setStep] = useState(1);
@@ -58,7 +59,7 @@ const StudentProfileCompletion = () => {
       }
 
       const response = await axios.put(
-        `http://localhost:8000/Students/${profileData.student_id}`,
+        `${API_BASE_URL}/Students/${profileData.student_id}`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
