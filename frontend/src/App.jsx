@@ -58,7 +58,7 @@ function App() {
           <Route path="/internship/edit/:internshipId" element={<EditInternship />} />
           <Route path="/internship/details/:internshipId" element={<InternshipDetails />} />
           <Route path="/student-dashboard" element={<StudentDashboard />} />
-          <Route path="admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/internship/internship-list"element={<InternshipList />}/>
           <Route path="/apply/:internshipId" element={<ApplyInternship />} />
           <Route path="/notifications" element={<Notifications />}/>

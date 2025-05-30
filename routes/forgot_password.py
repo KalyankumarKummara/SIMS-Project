@@ -32,8 +32,7 @@ async def forgot_password(data: ForgotPasswordRequest):
     )
 
     # Construct the reset link
-    reset_link = f"https://your-site.com/reset-password/{reset_token}"
-
+    reset_link = f"https://studentinternshipmanagementsystem.netlify.app/reset-password/{reset_token}"
     # Send email with reset link
     subject = "Password Reset Link"
     body = f"""
