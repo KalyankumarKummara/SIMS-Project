@@ -23,7 +23,7 @@ app = FastAPI()
 
 
 origins = [ "https://studentinternshipmanagementsystem.netlify.app",
-    "https://6839629f3cb4ec85f1c92fe3--studentinternshipmanagementsystem.netlify.app", ]
+    "https://68398d072be405df8a6a20e8--studentinternshipmanagementsystem.netlify.app/", ]
 
 app.add_middleware(
     CORSMiddleware,
