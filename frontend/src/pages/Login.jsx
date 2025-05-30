@@ -11,6 +11,7 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+     console.log("API Base URL being used:", API.defaults.baseURL);
     try {
       
       const isAdminEmail = email.endsWith("@example.com"); 
