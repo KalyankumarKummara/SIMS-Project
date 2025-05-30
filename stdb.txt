@@ -95,16 +95,16 @@ const StudentDashboard = () => {
   };
 
   // Calculate counts dynamically from applied_internships
-  const statusCounts = (dashboardData?.applied_internships ?? []).reduce(
-  (acc, internship) => {
-    if (internship.status === "pending") acc.pending += 1;
-    else if (internship.status === "shortlisted") acc.shortlisted += 1;
-    else if (internship.status === "accepted") acc.accepted += 1;
-    else if (internship.status === "rejected") acc.rejected += 1;
-    return acc;
-  },
-  { pending: 0, shortlisted: 0, accepted: 0, rejected: 0 }
-);
+  const statusCounts = dashboardData.applied_internships.reduce(
+    (acc, internship) => {
+      if (internship.status === "pending") acc.pending += 1;
+      else if (internship.status === "shortlisted") acc.shortlisted += 1;
+      else if (internship.status === "accepted") acc.accepted += 1;
+      else if (internship.status === "rejected") acc.rejected += 1;
+      return acc;
+    },
+    { pending: 0, shortlisted: 0, accepted: 0, rejected: 0 }
+  );
 
   // Calculate applied internships count (including pending, shortlisted, accepted, and rejected)
   const appliedInternshipsCount =
@@ -272,11 +272,10 @@ const StudentDashboard = () => {
     })
     .filter(duration => duration !== null); // Remove any null values
 
-  // Duration counts
-const durationCounts = (durations ?? []).reduce((acc, duration) => {
-  acc[duration] = (acc[duration] || 0) + 1;
-  return acc;
-}, {});
+  const durationCounts = durations.reduce((acc, duration) => {
+    acc[duration] = (acc[duration] || 0) + 1;
+    return acc;
+  }, {});
 
   const internshipDurationData = {
     labels: Object.keys(durationCounts).map(d => `${d} Months`), // X-axis labels (e.g., "4 Months", "6 Months")

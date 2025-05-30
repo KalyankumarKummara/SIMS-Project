@@ -22,7 +22,8 @@ from routes.savedInternships import savedInternships_router
 app = FastAPI()
 
 
-origins = ["*"]
+origins = [ "https://studentinternshipmanagementsystem.netlify.app",
+    "https://6839629f3cb4ec85f1c92fe3--studentinternshipmanagementsystem.netlify.app", ]
 
 app.add_middleware(
     CORSMiddleware,
