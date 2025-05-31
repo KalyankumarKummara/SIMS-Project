@@ -93,7 +93,7 @@ const AcceptedCandidates = () => {
       const candidatesWithInternshipDetails = await Promise.all(
         data.data.accepted.map(async (candidate) => {
           const internshipResponse = await fetch(
-            `${API_BASE_URL}/${candidate.internship_id}`
+            `${API_BASE_URL}/internships/${candidate.internship_id}`
           );
           const internshipData = await internshipResponse.json();
           return {
