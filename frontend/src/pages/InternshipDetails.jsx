@@ -4,7 +4,7 @@ import { FaMapMarkerAlt, FaClock, FaCheckCircle, FaArrowLeft, FaShareAlt, FaPape
 import { motion } from "framer-motion";
 import axios from "axios";
 import { Avatar } from "@mui/material";
-import API from "../utils/api";
+import API_BASE_URL from "../config";
 
 const InternshipDetails = () => {
   const { internshipId } = useParams();
